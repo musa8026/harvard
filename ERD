@@ -1,1 +1,96 @@
+Overview………………………………………..
+1. Business Problem ………………………………………..
+2. Objectives ………………………………………..
+3. Purpose of the Database ………………………………………..
+4. Description of the Data ………………………………………..
+5. Identifying the Database………………………………………..
+6. Scope ………………………………………..
+7. Scale ………………………………………..
+8. How the System Handle Growth ………………………………………..
+9. ERD Diagram and Schema ………………………………………..
+10. Business Queries ………………………………………..
+11. Code and Database ………………………………………..
+Overview
+1. Business Problem
+The business problem is to successfully create a real estate product that will provide the best customer 
+experience. “Continuous efforts to “disrupt” the multi-trillion real estate industry have been consistently 
+failing. Simply reiterating the fact that there are tons of inefficiencies to be addressed is not sufficient. 
+Instead, diving deeper into the reasons behind the current state of property market might be a useful 
+mental exercise for real estate innovators, as it might help to find the right approach to the right 
+stakeholders.” -workmobileEmpirically, successful products have one to three gamechanging features, dozens of features that 
+neutralize showstoppers, and very few features that are distractions. 
+2. Objectives
+As a technical business consultant to local agents, our goal is to create the best customer experience 
+with a scalable database that will give a technical edge in addition to game-changing features. Here 
+customers are segmented into 3 categories as “Buyer, Seller and Realtor” and their pain points 
+presented below :
+REAL ESTATE
+Buyer :
+- Wants take longer, more research, ------Physiological
+- Best option for mortgage, insurance, title, attorney, ----End to End Experience
+- Pay the Least House Price
+Seller
+- Wants take shorter transaction time ----- Ibuyer or Client
+- Buy (Upgrade, Downgrade) without Sell ---- End to End
+- Sell House for Top Dollar, Pay the Lease Commission
+Realtor
+-- Earn the most commision preferably from both selling and buying.
+– Provide the best experience via multiple selection to delight both buyers and sellers : Ibuyer -- Real 
+Estate Firm Buy, Power Buyer -- Seller Buy without Selling, Buy with All Cash Offer, Rent with Option to 
+Buy
+3. Purpose of the Database
+Create a Real Estate Database : In real estate data is everything. As a result a database that is scalable, 
+efficient and effective is a must. Here our database will be coming from an open source and manually 
+created data. This will enable our business to get the most accurate property sales, cost and customer 
+data. We will initially create SALE_HISTORY, TAX_DETAILS, FLOODS, HIGHLIGHTS, PROPERTY, 
+PROPERTY_CATEGORY, CRIME_IN_AREA, PROPERTY_TYPE, LOCATION, CITY, PUBLIC_TRANSPORT, 
+COUNTRY and STATE data later to be incorporated additional information.
+4. Description of the Data
+These data represents 14 tables for real estate transaction in the US that are relational with each other 
+via Primary and Foreign Keys. In the following section we highlighted how those data are related with 
+each other on ERD diagram. Most frequently used function will be to additional data point for a better 
+picture for buyers. We aim to provide more comprehensive information compared to Zillow, Redfin, 
+Compass and Realtor.com. For example we added “HIGHLIGHTS” table data to inform customers in 
+additional ways.
+5. Identifying the Database
+We will work with a Relational Database because we will mainly work with structured data that require 
+high level of data integrity and should be ACID It will also provide indexing capabilities, which results in 
+faster query response times and secure transactions. Finally, being a simple and flexible model that 
+provides normalization, a SQL database – preferably MySql will be an effective solution to work with real 
+estate data.
+Sources : 
+https://workmobile.today/what-made-real-estate-industry-lagging-behind-in-embracing-innovations-2/
+https://www.defmacro.org/2013/09/26/products.html
+A gamechanger - People will want to buy your product because of this feature.
+A showstopper - People won’t buy your product if you’re missing this feature, but adding it 
+won’t generate demand.
+A distraction - This feature will make no measurable impact on adoption.
+6. Scope
+We will initially focus on only buyers to narrow the scope (to be scaled later to seller and realtors when 
+needed.) 
+7. Scale
+MySQL is among the monolithic databases with vertical scaling. With the CAP theorem the trade-off 
+choice will be preferring “Consistency and Availability”. 
+8. How the System Handle Growth
+As we will be focusing on local data we would be able to handle scaling challenges via cluster or sharding 
+proxy in terms of system design. We will go with MySQL knowing those limitations.
+9. ERD Diagram and Schema
+TABLES
+Below are the tables we created for this database.
+• SALE_HISTORY
+• TAX_DETAILS
+• FLOODS
+• HIGHLIGHTS
+• PROPERTY
+• PROPERTY_CATEGORY
+• CRIME_IN_AREA
+• PROPERTY_TYPE
+• LOCATION
+• CITY
+• PUBLIC_TRANSPORT
+• COUNTRY
+• STATE
+Below is Crow’s Foot Notation to help understand how we designed our database via “Many”, “One and 
+ONLY One”, “Zero or One”, “One or Many” and “Zero or Many”.
+Source : https://canvas.harvard.edu/courses/96438/pages/week-5-entity-relationship-diagramsmaterials (https://www.vivekmchawla.com/erd-crows-foot-relationship-symbols-cheat-sheet/)
 
