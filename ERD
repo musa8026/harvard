@@ -92,5 +92,96 @@ Below are the tables we created for this database.
 • STATE
 Below is Crow’s Foot Notation to help understand how we designed our database via “Many”, “One and 
 ONLY One”, “Zero or One”, “One or Many” and “Zero or Many”.
-Source : https://canvas.harvard.edu/courses/96438/pages/week-5-entity-relationship-diagramsmaterials (https://www.vivekmchawla.com/erd-crows-foot-relationship-symbols-cheat-sheet/)
-
+10. Business Queries
+The website that our High Fidelity Design with my Database will look like this example below.
+https://zerodown.com
+There are many useful insight can be compiled via both manually and machine learning. However here 
+for the sake of simplicity we focused on some simple queries to see if our tables have been set up 
+properly. Below is the example code snippets and results :
+Query 1:
+--List of properties in New york city
+SELECT
+P.PropertyName,
+P.NumberOfRooms,
+P.NumberOfBathRooms,
+P.NumberOfGarages,
+P.NumberOfParkingSpaces,
+P.Price,
+L.StreetAddress,
+C.CityName
+FROM
+property P INNER JOIN location L on P.LocationID=L.LocationID
+LEFT JOIN city C on C.CityID=L.CityID
+WHERE C.CityName='New York
+Query 2:
+--Total number of properties against every city in DB
+SELECT
+C.CityName,
+COUNT(P.PropertyID) AS totalListedProperties
+FROM
+property P INNER JOIN location L on P.LocationID=L.LocationID
+LEFT JOIN city C on C.CityID=L.CityID
+GROUP BY C.CityName
+Query 3:
+--Higlights of property with the ID=1
+SELECT
+P.PropertyName,
+P.Price,
+H.HighlightTitle,
+H.HighlightDescription
+FROM property P INNER JOIN highlights H
+on p.PropertyID=H.PropertyID
+WHERE P.PropertyID=1
+Query 4:
+--Get all the schools which is near to any property
+SELECT
+P.PropertyName,
+S.SchoolName,
+S.DistanceFromProperty
+FROM property P INNER JOIN school S
+on P.PropertyID=S.PropertyID
+Query 5:
+--Get the list of properties with the type of Single-Family Home
+SELECT
+P.PropertyName,
+P.Price,
+P.NumberOfRooms,
+P.NumberOfBathRooms,
+P.NumberOfGarages,
+PT.TypeName
+FROM property P INNER JOIN property_type PT
+on P.PropertyTypeID=PT.PropertyTypeID
+WHERE PT.TypeName='Single-Family Home'
+Query 6:
+--Number of Listed properties W.R.T their type
+SELECT
+PT.TypeName,
+COUNT(P.PropertyID) as ListProperties
+FROM property P INNER JOIN property_type PT
+on P.PropertyTypeID=PT.PropertyTypeID
+GROUP BY PT.TypeName
+Query 7:
+--How many crimes happened near to each property
+SELECT
+P.PropertyName,
+COUNT(ca.CrimeRecordID) as crimeCount
+FROM property P INNER JOIN crime_in_area ca
+on P.PropertyTypeID=ca.PropertyID
+GROUP BY P.PropertyName
+Note : 
+InnoDB is a storage engine that allow Foriegn Key, Rollback, commit and ACID Compliant.
+CHARSET = is a set of characters that are legal in a string.
+uft8mb4 means that each character is stored as a maximum of 4 bytes in the UTF-8 encoding scheme.
+ai refers accent insensitivity
+ci refers to case insensitivity.
+COLLATE = set of rules used to compare characters
+11. Code and Database
+Code will be attached separately.
+We used xampp-control App (XAMPP provides a Control Panel for efficient management of the 
+software in the XAMPP package. You can use the Control Panel to determine whether Apache and 
+MySQL are currently running and to start or stop them. Before you can use your development 
+environment, Apache and MySQL must be running)
+Source : https://www.oreilly.com/library/view/phpmysql/9780470167779/9780470167779_using_the_xampp_control_panel.htm
+We create our database via highlighted yellow named “PropertyManagDB”
+The we go to SQL tab and paste our code to create the schema and dump the data.
+Here it shows that our database tables have been created.
